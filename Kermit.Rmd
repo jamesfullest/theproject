@@ -1,0 +1,21 @@
+---
+title: "the project"
+author: "James Fuller"
+date: "November 14, 2018"
+output: html_document
+---
+```{r}
+library(tidyverse)
+kermit <- ("kermit.csv")
+
+#made a histogram
+kermit_hist <- ggplot(kermit, aes(x = Score.pre))+
+  geom_histogram()+
+  facet_wrap(~Gender)
+
+kermit_hist
+```
+
+
+
+
