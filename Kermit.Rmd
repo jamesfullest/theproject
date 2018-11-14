@@ -6,7 +6,7 @@ output: html_document
 ---
 ```{r}
 library(tidyverse)
-kermit <- ("kermit.csv")
+kermit <- read_csv("kermit.csv")
 
 #made a histogram
 kermit_hist <- ggplot(kermit, aes(x = Score.pre))+
@@ -16,6 +16,26 @@ kermit_hist <- ggplot(kermit, aes(x = Score.pre))+
 kermit_hist
 ```
 
+```{r}
+#Is there a significant difference in pre talk kermit scores for males and females?
+
+#unpaired- Mann-whintey U:
+
+mwu_kermit <- kermit %>%
+  wilcox.test(Score.pre ~ Gender, data = .)
+
+```
+
+Collaborator:
+Is there a significant difference in Kermit Ranks for pre-talk and post-talk scores(ignoring all other variables)?
+
+Null: no
+```{r}
+wsr_rank <- wilcox.test(kermit$Score.pre, kermit$Score.post, paired = TRUE)
+wsr_rank
+
+#there is no significant difference in Kermit rankings before and after his talk. 
+```
 
 
 
